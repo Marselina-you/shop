@@ -20,6 +20,7 @@ const imagecomp = require('compress-images');
  // Подключаем модуль del
 const del = require('del');
 
+
 // Определяем логику работы Browsersync
 function browsersync() {
 	browserSync.init({ // Инициализация Browsersync
