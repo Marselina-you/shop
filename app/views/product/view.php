@@ -48,10 +48,10 @@
                                             <span>US $<?php echo $product['price']; ?></span>
                                             <label>Количество:</label>
                                             <input type="text" value="3" />
-                                            <button type="button" class="btn btn-fefault cart">
+                                            <a href="/cart/add/<?php echo $product['id'];?>" class="btn btn-default add-to-cart"><button type="button" class="btn btn-fefault cart">
                                                 <i class="fa fa-shopping-cart"></i>
                                                 В корзину
-                                            </button>
+                                            </button></a>
                                         </span>
                                         <p><b>Наличие:</b> На складе</p>
                                         <p><b>Состояние:</b> Новое</p>
