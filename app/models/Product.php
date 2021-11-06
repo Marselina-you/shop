@@ -6,8 +6,8 @@ include_once ROOT . '/models/Product.php';
 
 class Product
 {   
-    const SHOW_BY_DEFAULT = 10;
-    public static function getLatestProducts($count = self::SHOW_BY_DEFAULT)
+    const SHOW_BY_DEFAULT = 3;
+    public static function getLatestProducts($count = self::SHOW_BY_DEFAULT, $page = 1)
     {
         $count = intval($count);
         $db = Db::getConnection();
@@ -24,16 +24,20 @@ class Product
         }
         return $productsList;
     }
-    public static function getProductsListByCategory($categoryId = false)
+    public static function getProductsListByCategory($categoryId = false, $page=  1)
     {
         if ($categoryId) {
+
+            $page = intval($page);
+            $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
             $db = Db::getConnection();            
             $products = array();
             $result = $db->query("SELECT id, name, price, image, is_new FROM product "
                     . "WHERE status = '1' AND category_id = '$categoryId' "
-                    . "ORDER BY id DESC "                
-                    . "LIMIT ".self::SHOW_BY_DEFAULT);
+                    . "ORDER BY id ASC "                
+                    . "LIMIT ".self::SHOW_BY_DEFAULT
+                    . ' OFFSET '. $offset);
 
             $i = 0;
             while ($row = $result->fetch()) {

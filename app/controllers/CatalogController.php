@@ -19,8 +19,11 @@ class CatalogController
         return true;
     }
     
-    public function actionCategory($categoryId)
-    {
+    public function actionCategory($categoryId, $page = 1)
+    {   
+
+        echo "Category: ".$categoryId;
+        echo '<br>Page: '.$page;
         $categories = array();
         $categories = Category::getCategoriesList();
         
