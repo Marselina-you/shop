@@ -10,6 +10,8 @@ class Product
     public static function getLatestProducts($count = self::SHOW_BY_DEFAULT, $page = 1)
     {
         $count = intval($count);
+        $page = intval($page);
+        $offset = $page * $count;
         $db = Db::getConnection();
         $productsList = array();
         $result = $db->query('SELECT id, name, price, image, is_new FROM product WHERE status = "1" ORDER BY id DESC LIMIT '.$count);
