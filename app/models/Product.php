@@ -67,5 +67,15 @@ class Product
             return $result->fetch();
         }
     }
+    public static function getTotalProductsInCategory($categoryId)
+    {
+        $db = Db::getConnection();
+        $result = $db->query('SELECT count(id) AS count FROM product '
+                . 'WHERE status="1" AND category_id ="'.$categoryId.'"');
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $result->fetch();
+
+        return $row['count'];
+    }
     
 }

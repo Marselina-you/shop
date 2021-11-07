@@ -63,7 +63,7 @@
                                     <li><a href="/cart/"><i class="fa fa-shopping-cart"></i> Корзина(<span id="cart-count"></span>)</a>
                                         </li>
                                     <li><a href="#"><i class="fa fa-user"></i> Аккаунт</a></li>
-                                    <li><a href="#"><i class="fa fa-lock"></i> Вход</a></li>
+                                    <li><a href="/register/"><i class="fa fa-lock"></i> Вход</a></li>
                                 </ul>
                             </div>
                         </div>

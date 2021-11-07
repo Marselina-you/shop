@@ -49,7 +49,9 @@
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach;?>                              
+                    <?php endforeach;?> 
+                    <!-- Постраничная навигация -->
+                    <?php echo $pagination->get(); ?>                             
                     
                 </div><!--features_items-->
 
