@@ -1,6 +1,6 @@
 <?php
 
-<?php 
+
 class Cart
 {
     public static function addProduct($id)
