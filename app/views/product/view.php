@@ -48,7 +48,7 @@
                                             <span>US $<?php echo $product['price']; ?></span>
                                             <label>Количество:</label>
                                             <input type="text" value="3" />
-                                            <a href="#" class="btn btn-default add-to-cart" data-id="<?php echo $product['id']; ?>"><button type="button" class="btn btn-fefault cart">
+                                            <a href="/cart/add/<?php echo $product['id']; ?>" class="btn btn-default add-to-cart" data-id="<?php echo $product['id']; ?>"><button type="button" class="btn btn-fefault cart">
                                                 <i class="fa fa-shopping-cart"></i>
                                                 В корзину
                                             </button></a>
