@@ -16,6 +16,20 @@ class User
         
         return $result->execute();
     }
+     public static function edit($id, $name, $password)
+    {
+        $db = Db::getConnection();
+        
+        $sql = "UPDATE user 
+            SET name = :name, password = :password 
+            WHERE id = :id";
+        
+        $result = $db->prepare($sql);                                  
+        $result->bindParam(':id', $id, PDO::PARAM_INT);       
+        $result->bindParam(':name', $name, PDO::PARAM_STR);    
+        $result->bindParam(':password', $password, PDO::PARAM_STR); 
+        return $result->execute();
+    }
     public static function checkUserData($email, $password)
     {
         $db = Db::getConnection();
@@ -35,17 +49,25 @@ class User
         return false;
     }
     public static function auth($userId)
-    {
+    {   
+        
         $_SESSION['user'] = $userId;
     }
-     public static function checkLogged()
+    public static function checkLogged()
     {
-        // Если сессия есть, вернем идентификатор пользователя
+        
         if (isset($_SESSION['user'])) {
             return $_SESSION['user'];
         }
-
         header("Location: /user/login");
+
+    }
+     public static function isGuest()
+    {   
+        if (isset($_SESSION['user'])) {
+            return false;
+        }
+        return true;
     }
     
     /**
@@ -91,6 +113,23 @@ class User
         if($result->fetchColumn())
             return true;
         return false;
+    }
+    public static function getUserById($id)
+    {
+        if ($id) {
+            $db = Db::getConnection();
+            $sql = 'SELECT * FROM user WHERE id = :id';
+
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+            // Указываем, что хотим получить данные в виде массива
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            $result->execute();
+
+
+            return $result->fetch();
+        }
     }
     
 }

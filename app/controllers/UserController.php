@@ -1,5 +1,5 @@
 <?php
-include_once ROOT . '/models/User.php';
+
 class UserController
 {
 
@@ -87,7 +87,7 @@ public function actionLogin()
     }
     public function actionLogout()
     {
-        session_start();
+       
         unset($_SESSION["user"]);
         header("Location: /");
     }
