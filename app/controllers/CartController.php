@@ -9,12 +9,24 @@ class CartController
 		$referrer = $_SERVER['HTTP_REFERER'];
 		header("Location: $referrer");
 	}
+
 	 public function actionAddAjax($id)
     {
         // Добавляем товар в корзину
         echo Cart::addProduct($id);
         return true;
     }
+
+
+    public function actionDelete($id)
+    {
+        // Удалить товар из корзины
+         Cart::deleteProduct($id);
+        // Возвращаем пользователя на страницу
+        header("Location: /cart/");
+    }
+
+    
     public function actionIndex()
     {
         $categories = array();
