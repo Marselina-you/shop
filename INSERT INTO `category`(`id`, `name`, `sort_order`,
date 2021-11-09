@@ -1,0 +1,9 @@
+INSERT INTO `category`( `name`, `sort_order`, `status`) VALUES ('рубашки', '3', '1');
+INSERT INTO `category`( `name`, `sort_order`, `status`) VALUES ('сосиски', '3', '1');
+INSERT INTO `category`( `name`, `sort_order`, `status`) VALUES ('сумки', '3', '1');
+INSERT INTO `category`( `name`, `sort_order`, `status`) VALUES ('джинсы', '3', '1');
+INSERT INTO `category`( `name`, `sort_order`, `status`) VALUES ('майки', '3', '1');
+INSERT INTO `category`( `name`, `sort_order`, `status`) VALUES ('платья', '3', '1');
+INSERT INTO `category`( `name`, `sort_order`, `status`) VALUES ('огурцы', '3', '1');
+INSERT INTO `category`( `name`, `sort_order`, `status`) VALUES ('бананы', '3', '1');
+INSERT INTO `category`( `name`, `sort_order`, `status`) VALUES ('штаны', '3', '1');
