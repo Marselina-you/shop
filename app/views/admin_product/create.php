@@ -80,13 +80,9 @@
 
                         <br/><br/>
 
-                        <p>Рекомендуемые</p>
-                        <select name="is_recommended">
-                            <option value="1" selected="selected">Да</option>
-                            <option value="0">Нет</option>
-                        </select>
+                       
 
-                        <br/><br/>
+                       
 
                         <p>Статус</p>
                         <select name="status">

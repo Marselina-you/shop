@@ -1,7 +1,5 @@
 <?php
 
-include_once ROOT . '/models/Category.php';
-include_once ROOT . '/models/Product.php';
 
 
 class Product
@@ -131,6 +129,75 @@ class Product
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         return $result->execute();
+    }
+
+    public static function updateProductById($id, $options)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Текст запроса к БД
+        $sql = "UPDATE product
+            SET 
+                name = :name, 
+                code = :code, 
+                price = :price, 
+                category_id = :category_id, 
+                brand = :brand, 
+                availability = :availability, 
+                description = :description, 
+                is_new = :is_new, 
+                
+                status = :status
+            WHERE id = :id";
+
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+        $result->bindParam(':code', $options['code'], PDO::PARAM_STR);
+        $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
+        $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
+        $result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
+        $result->bindParam(':availability', $options['availability'], PDO::PARAM_INT);
+        $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
+        $result->bindParam(':is_new', $options['is_new'], PDO::PARAM_INT);
+       
+        $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
+        return $result->execute();
+    }
+    
+    public static function createProduct($options)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Текст запроса к БД
+        $sql = 'INSERT INTO product '
+                . '(name, code, price, category_id, brand, availability,'
+                . 'description, is_new,  status)'
+                . 'VALUES '
+                . '(:name, :code, :price, :category_id, :brand, :availability,'
+                . ':description, :is_new,  :status)';
+
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+        $result->bindParam(':code', $options['code'], PDO::PARAM_STR);
+        $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
+        $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
+        $result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
+        $result->bindParam(':availability', $options['availability'], PDO::PARAM_INT);
+        $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
+        $result->bindParam(':is_new', $options['is_new'], PDO::PARAM_INT);
+        
+        $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
+        if ($result->execute()) {
+            // Если запрос выполенен успешно, возвращаем id добавленной записи
+            return $db->lastInsertId();
+        }
+        // Иначе возвращаем 0
+        return 0;
     }
     
 }
