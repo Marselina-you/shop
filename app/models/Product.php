@@ -101,5 +101,36 @@ class Product
 
         return $products;
     }
+    public static function getProductsList()
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Получение и возврат результатов
+        $result = $db->query('SELECT id, name, price, code FROM product ORDER BY id ASC');
+        $productsList = array();
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $productsList[$i]['id'] = $row['id'];
+            $productsList[$i]['name'] = $row['name'];
+            $productsList[$i]['code'] = $row['code'];
+            $productsList[$i]['price'] = $row['price'];
+            $i++;
+        }
+        return $productsList;
+    }
+    public static function deleteProductById($id)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Текст запроса к БД
+        $sql = 'DELETE FROM product WHERE id = :id';
+
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        return $result->execute();
+    }
     
 }
