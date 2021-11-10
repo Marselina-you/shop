@@ -178,7 +178,7 @@ class Product
                 . 'description, is_new,  status)'
                 . 'VALUES '
                 . '(:name, :code, :price, :category_id, :brand, :availability,'
-                . ':description, :is_new,  :status)';
+                . ':description, :is_new, :status)';
 
         // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
@@ -190,11 +190,11 @@ class Product
         $result->bindParam(':availability', $options['availability'], PDO::PARAM_INT);
         $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
         $result->bindParam(':is_new', $options['is_new'], PDO::PARAM_INT);
-        
+       
         $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
         if ($result->execute()) {
             // Если запрос выполенен успешно, возвращаем id добавленной записи
-            return $db->lastInsertId();
+            
         }
         // Иначе возвращаем 0
         return 0;

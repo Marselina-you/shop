@@ -43,8 +43,9 @@ class AdminProductController extends AdminBase
             $options['price'] = $_POST['price'];
             $options['category_id'] = $_POST['category_id'];
             $options['brand'] = $_POST['brand'];
+             $options['description'] = $_POST['description'];
             $options['availability'] = $_POST['availability'];
-            $options['description'] = $_POST['description'];
+           
             $options['is_new'] = $_POST['is_new'];
             
             $options['status'] = $_POST['status'];
@@ -61,7 +62,7 @@ class AdminProductController extends AdminBase
                 // Если ошибок нет
                 // Добавляем новый товар
                 $id = Product::createProduct($options);
-                
+
 
                 // Если запись добавлена
                
