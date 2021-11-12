@@ -310,17 +310,7 @@ class Product
      * @param integer $availability <p>Статус</p>
      * @return string <p>Текстовое пояснение</p>
      */
-    public static function getAvailabilityText($availability)
-    {
-        switch ($availability) {
-            case '1':
-                return 'В наличии';
-                break;
-            case '0':
-                return 'Под заказ';
-                break;
-        }
-    }
+   
 
     /**
      * Возвращает путь к изображению
