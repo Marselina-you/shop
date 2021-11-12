@@ -56,8 +56,7 @@
                         <p>Производитель</p>
                         <input type="text" name="brand" placeholder="" value="">
 
-                        <p>Изображение товара</p>
-                        <input type="file" name="image" placeholder="" value="">
+                      
 
                         <p>Детальное описание</p>
                         <textarea name="description"></textarea>
