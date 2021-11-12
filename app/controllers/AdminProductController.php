@@ -96,13 +96,15 @@ class AdminProductController extends AdminBase
             // Если форма отправлена
             // Получаем данные из формы редактирования. При необходимости можно валидировать значения
             $options['name'] = $_POST['name'];
+            $options['category_id'] = $_POST['category_id'];
             $options['code'] = $_POST['code'];
             $options['price'] = $_POST['price'];
-            $options['category_id'] = $_POST['category_id'];
-            $options['brand'] = $_POST['brand'];
             $options['availability'] = $_POST['availability'];
+            $options['brand'] = $_POST['brand'];
+            
             $options['description'] = $_POST['description'];
             $options['is_new'] = $_POST['is_new'];
+            $options['is_recommended'] = $_POST['is_recommended'];
             
             $options['status'] = $_POST['status'];
 

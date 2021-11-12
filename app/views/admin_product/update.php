@@ -71,6 +71,13 @@
                         </select>
                         
                         <br/><br/>
+                         <p>Рекомендуемые</p>
+                        <select name="is_recommended">
+                            <option value="1" <?php if ($product['is_recommended'] == 1) echo ' selected="selected"'; ?>>Да</option>
+                            <option value="0" <?php if ($product['is_recommended'] == 0) echo ' selected="selected"'; ?>>Нет</option>
+                        </select>
+                        
+                        <br/><br/>
 
                        
 
