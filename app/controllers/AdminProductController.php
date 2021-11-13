@@ -65,7 +65,14 @@ class AdminProductController extends AdminBase
 
 
                 // Если запись добавлена
-               
+               // Если запись добавлена
+                if ($id) {
+                    // Проверим, загружалось ли через форму изображение
+                    if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+                        // Если загружалось, переместим его в нужную папке, дадим новое имя
+                        move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/products/{$id}.jpg");
+                    }
+                };
 
                 // Перенаправляем пользователя на страницу управлениями товарами
                 header("Location: /admin/product");
@@ -114,6 +121,9 @@ class AdminProductController extends AdminBase
 
                 // Если запись сохранена
                 // Проверим, загружалось ли через форму изображение
+                 // Если загружалось, переместим его в нужную папке, дадим новое имя
+                   move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/products/{$id}.jpg");
+                }
                 
             }
 
