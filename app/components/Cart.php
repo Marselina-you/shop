@@ -62,4 +62,10 @@ class Cart
         // Записываем массив товаров с удаленным элементом в сессию
         $_SESSION['products'] = $productsInCart;
     }
+    public static function clear()
+    {
+        if (isset($_SESSION['products'])) {
+            unset($_SESSION['products']);
+        }
+    }
 }
